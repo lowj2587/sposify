@@ -17,32 +17,6 @@ class WebPlaybackLoading extends Component {
 }
 
 class WebPlaybackWaitingForDevice extends Component {
-  createSpotifyPlayerInstance = () => {
-    window.Spotify.PlayerInstance = new window.Spotify.Player({
-      name: this.props.playerName,
-      volume: this.props.playerInitialVolume,
-      getOAuthToken: callback => {
-        callback(this.props.userAccessToken);
-      }
-    });
-
-    let { PlayerInstance: instance } = window.Spotify;
-
-    instance.on("initialization_error", e => { this.props.setError(e.message); });
-    instance.on("authentication_error", e => { this.props.setError(e.message); });
-    instance.on("account_error", e => { this.props.setError(e.message); });
-    instance.on("playback_error", e => { this.props.setError(e.message); });
-    instance.on("player_state_changed", state => {
-      if (this.props.onPlayerStateChange) this.props.onPlayerStateChange(state);
-    });
-    instance.on("ready", data => {
-      if (this.props.onPlayerReady) this.props.onPlayerReady(data);
-    });
-
-    if (this.props.playerAutoConnect) {
-      instance.connect();
-    }
-  }
 
   componentWillMount = () => {
     if (!window.Spotify.PlayerInstance) {
