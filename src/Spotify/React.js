@@ -88,31 +88,22 @@ class WebPlayback extends Component {
     if (this.interval) clearInterval(this.interval);
   }
 
-  getTypeName = (props) => {
-    let prop_keys = Object.keys(props);
-    if (prop_keys.includes("Error")) return "Error";
-    if (prop_keys.includes("Loading")) return "Loading";
-    if (prop_keys.includes("WaitingForDevice")) return "WaitingForDevice";
-    if (prop_keys.includes("Player")) return "Player";
-    throw new Error(`Unrecognised WebPlayback.Screen type`);
-  }
-
   childrenWithAddedProps = () => {
     return React.Children.map(this.props.children, child => {
-      let child_type = this.getTypeName(child.props);
+      let child_type = child.props.state;
 
       switch (child_type) {
         case 'Error':
           return React.cloneElement(child, { errorMessage: this.state.error });
         case 'Loading':
           return (
-            <WebPlaybackLoading Loading setLoadingState={this.setLoadingState}>
+            <WebPlaybackLoading state="Loading" setLoadingState={this.setLoadingState}>
               {child.props.children}
             </WebPlaybackLoading>
           );
         case 'WaitingForDevice':
           return (
-            <WebPlaybackWaitingForDevice WaitingForDevice {...this.props}>
+            <WebPlaybackWaitingForDevice state="WaitingForDevice" {...this.props}>
               {child.props.children}
             </WebPlaybackWaitingForDevice>
           );
@@ -127,7 +118,7 @@ class WebPlayback extends Component {
 
   getScreenByTypeName = (type_name) => {
     return this.childrenWithAddedProps().filter(child => {
-      return type_name === this.getTypeName(child.props);
+      return type_name === child.props.state;
     })[0];
   }
 

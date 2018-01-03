@@ -55,22 +55,27 @@ export default class App extends Component {
               playerInitialVolume={1.0}
               playerAutoConnect={true}
               userAccessToken={this.state.accessToken}
-              onPlayerReady={(data) => this.setState({ deviceId: data.device_id })}
-              onPlayerStateChange={(playerState) => this.setState({ playerState: playerState })}>
+              onPlayerReady={data => this.setState({ deviceId: data.device_id })}
+              onPlayerStateChange={playerState => this.setState({ playerState: playerState })}
 
-              <Screen Error>
+              onPlayerError={playerError => console.log(playerError)}
+              onPlayerLoading={() => console.log("loaded")}
+              onPlayerWaitingForDevice={() => console.log("waiting for device")}
+              onPlayer>
+
+              <Screen state="Error">
                 <h3>Error</h3>
               </Screen>
 
-              <Screen Loading>
+              <Screen state="Loading">
                 <h3>Loading Web Playback SDK</h3>
               </Screen>
 
-              <Screen WaitingForDevice>
+              <Screen state="WaitingForDevice">
                 <h3>Waiting for Device to be Selected</h3>
               </Screen>
 
-              <Screen Player>
+              <Screen state="Player">
                 <h1>Web Playback SDK + React</h1>
                 {this.state.playerState && <NowPlayingScreen />}
               </Screen>
