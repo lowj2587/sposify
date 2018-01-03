@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-// Placeholder
-window.onSpotifyWebPlaybackSDKReady = () => {};
-
 class WebPlaybackLoading extends Component {
   componentWillMount = () => {
     if (window.Spotify) {

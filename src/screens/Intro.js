@@ -1,10 +1,10 @@
 import React from 'react';
-import loginWithSpotify from '../Spotify/Login.js';
+import Login from '../Spotify/Login.js';
 
 export default class IntroScreen extends React.Component {
   buttonClick = (e) => {
     e.preventDefault();
-    loginWithSpotify();
+    Login.logInWithSpotify();
   }
 
   links = {

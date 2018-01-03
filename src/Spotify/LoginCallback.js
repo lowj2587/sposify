@@ -1,4 +1,4 @@
-export default (callback) => {
+export default (onAccessTokenExpiration) => {
   let { localStorage, location: {hash} } = window;
   let hashExists = hash.length > 0;
   let hashObj = () => {
@@ -12,16 +12,19 @@ export default (callback) => {
   };
   
   if (!hashExists && localStorage.getItem('access_token')) {
-    return localStorage.getItem('access_toke
+    return localStorage.getItem('access_token');
   } else if (hashExists) {
     window.location.hash = '';
+    
+    // Set access token
+    localStorage.setItem('access_token', hashObj.access_token);
 
     // Let us know when the access token expires
     setTimeout(() => {
-      if (callback) { callback(); }
-    }, hash.expires_in * 1000);
+      if (typeof onAccessTokenExpiration !== "undefined") { onAccessTokenExpiration(); }
+    }, hashObj.expires_in * 1000);
 
-    return hash.access_token;
+    return hashObj.access_token;
   }
   else {
     return null;
