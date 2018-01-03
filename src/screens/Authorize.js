@@ -18,7 +18,7 @@ export default class AuthorizeScreen extends React.Component {
         <p>Here's a sample app built with the <a target="_blank" href={this.links.announcement}>new Web Playback SDK</a> & <a target="_blank" href={this.links.create_react_app}>Create React App</a> on <a href={this.links.glitch}>Glitch</a>.</p>
         <p><strong>Happy hacking with React!</strong></p>
         
-        <button className="btn btn-lg btn-violet" onClick={this.buttonClick}>Log in with Spotify</button>
+        <button className="btn btn-md btn-violet" onClick={this.buttonClick}>Log in with Spotify</button>
       </div>
     );
   };
