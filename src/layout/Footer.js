@@ -6,7 +6,7 @@ export default () => {
       <p>
         &copy; 2017 Spotify AB
         &mdash;
-        Built by <a href="https://bilaw.al" target="_blank">Bilawal Hameed</a>
+        Want to remix this? <a href="https://glitch.com/edit/#!/spotify-web-playback-react" target="_blank">Go remix it!</a>
       </p>
     </footer>
   );

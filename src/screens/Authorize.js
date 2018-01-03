@@ -15,16 +15,10 @@ export default class AuthorizeScreen extends React.Component {
   render = () => {
     return (
       <div className="screen screen-authorize">
-        <p>
-          We <a target="_blank" href={this.links.announcement}>just announced</a> the Web Playback SDK.
-          <br />
-          <br />
-          Here's a sample app built with <a target="_blank" href={this.links.create_react_app}>Create React App</a> on <a href={this.links.glitch}>Glitch</a>.
-          <br />
-          <strong>Go have fun & build cool stuff.</strong>
-        </p>
+        <p>Here's a sample app built with the <a target="_blank" href={this.links.announcement}>new Web Playback SDK</a> & <a target="_blank" href={this.links.create_react_app}>Create React App</a> on <a href={this.links.glitch}>Glitch</a>.</p>
+        <p><strong>Happy hacking with React!</strong></p>
         
-        <button className="btn btn-sm btn-primary" onClick={this.buttonClick}>Log in with Spotify</button>
+        <button className="btn btn-lg btn-violet" onClick={this.buttonClick}>Log in with Spotify</button>
       </div>
     );
   };
