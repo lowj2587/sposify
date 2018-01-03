@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-
-import Header from './layout/Header.js';
-import Footer from './layout/Footer.js';
 import {
   WebPlaybackScreen as Screen,
   WebPlayback
 } from './Spotify/React.js';
-import LoginCallback from './Spotify/LoginCallback.js';
-import IntroScreen from './screens/Intro.js';
+
 import './App.css';
+import Header from './layout/Header.js';
+import Footer from './layout/Footer.js';
+
+import LoginCallback from './Spotify/LoginCallback.js';
+
+import IntroScreen from './screens/Intro.js';
+import NowPlayingScreen from './screens/NowPlaying.js';
 
 window.onSpotifyWebPlaybackSDKReady = () => {};
 
@@ -32,6 +35,7 @@ export default class App extends Component {
   
   onAccessTokenExpiration() {
     this.setState({
+      deviceId: null,
       accessToken: null,
       playerState: null
     });
@@ -51,7 +55,7 @@ export default class App extends Component {
               playerInitialVolume={1.0}
               playerAutoConnect={true}
               userAccessToken={this.state.accessToken}
-              onPlayerReady={(data) => console.log("player ready", data)}
+              onPlayerReady={(data) => this.setState({ deviceId: data.device_id })}
               onPlayerStateChange={(playerState) => this.setState({ playerState: playerState })}>
 
               <Screen Error>
@@ -68,7 +72,7 @@ export default class App extends Component {
 
               <Screen Player>
                 <h1>Web Playback SDK + React</h1>
-                {playerState && <NowPlayingView playerState={playerState} />}
+                {this.state.playerState && <NowPlayingScreen />}
               </Screen>
             </WebPlayback>}
         </main>
