@@ -1,10 +1,6 @@
 .App {
-  font-family: Circular,Helvetica,Arial,sans-serif;
+  font-family: Circular, Helvetica, Arial, sans-serif;
   text-align: left;
-}
-
-.App-logo {
-  height: 40px;
 }
 
 .App-header {
@@ -13,28 +9,6 @@
   color: white;
 }
 
-.App-product {
-  background: #121212;
-  color: #FFF;
-  display: block;
-  font-size: 14px;
-  padding: 10px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-.App-product:hover, .App-product:active, .App-product:focus { color: #FFF; }
-.App-product.web-playback-sdk { background: #af2896; }
-.App-product > .beta { color: orange; }
-
-.App-intro {
-  font-size: large;
-}
-
-.App-footer {
-  padding: 50px 0 0;
-}
-
-.App-footer > p > a {
-  color: inherit;
-  text-decoration: underline;
+.App-logo {
+  height: 40px;
 }

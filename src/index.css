@@ -4,8 +4,12 @@ body {
   font-family: sans-serif;
 }
 
-main {
-  padding: 20px;
+header, main, footer {
+  padding: 0 20px;
+}
+
+footer {
+  padding: 20px 20px 0;
 }
 
 .spotify-green {

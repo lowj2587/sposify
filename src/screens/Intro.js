@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class AuthorizeScreen extends React.Component {
+export default class IntroScreen extends React.Component {
   // buttonClick = (e) => {
     // Send them to accounts.spotify.com
     // SpotifyDemo.sendToLogin();
@@ -15,10 +15,12 @@ export default class AuthorizeScreen extends React.Component {
   render = () => {
     return (
       <div>
-        <p>Here's a sample app built with the <a target="_blank" href={this.links.announcement}>new Web Playback SDK</a> & <a target="_blank" href={this.links.create_react_app}>Create React App</a> on <a href={this.links.glitch}>Glitch</a>.</p>
-        <p><strong>Happy hacking with React!</strong></p>
+        <p>Here's a sample app built with the <a target="_blank" href={this.links.announcement}>Spotify Web Playback SDK</a> & <a target="_blank" href={this.links.create_react_app}>Create React App</a> on <a href={this.links.glitch}>Glitch</a>.</p>
+        <p><strong>Happy hacking!</strong></p>
         
         <button className="btn btn-md btn-violet" onClick={this.buttonClick}>Log in with Spotify</button>
+        &nbsp;
+        <a href={this.links.glitch} className="btn btn-md btn-salmon">Remix on Glitch</a>
       </div>
     );
   };
