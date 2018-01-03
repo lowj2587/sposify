@@ -1,6 +1,6 @@
 export default () => {
   let client_id      = "bad9e04cf07e4ac89c75a71999f18955";
-  let redirect_uri   = "https://spotify-web-playback-sdk.glitch.me";
+  let redirect_uri   = "https://spotify-web-playback-react.glitch.me";
   let scopes         = "streaming user-read-birthdate user-read-email user-read-private user-modify-playback-state";
   let scopes_encoded = scopes.replace(" ", "%20");
   
