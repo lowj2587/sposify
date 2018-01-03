@@ -14,8 +14,13 @@ window.onSpotifyWebPlaybackSDKReady = () => {};
 
 export default class App extends Component {
   state = {
+    // User's session credentials
     deviceId: null,
     accessToken: null,
+
+    // Player state
+    playerLoaded: false,
+    playerSelected: false,
     playerState: null
   }
 
@@ -40,23 +45,38 @@ export default class App extends Component {
   }
   
   render() {
+    let {
+      deviceId,
+      accessToken,
+      playerLoaded,
+      playerSelected,
+      playerState
+    } = this.state;
+    
     return (
       <div className="App">
         <Header />
       
         <main>
-          {!this.state.accessToken && <IntroScreen />}
-          {this.state.accessToken &&
+          {!accessToken && <IntroScreen />}
+          {accessToken &&
             <WebPlayback
               playerName="Bilawal's React Player"
               playerInitialVolume={1.0}
               playerAutoConnect={true}
-              userAccessToken={this.state.accessToken}
-              onPlayerLoading={() => console.log("loaded")}
+              userAccessToken={accessToken}
+              onPlayerLoading={() => this.setState({ playerLoaded: true })}
               onPlayerWaitingForDevice={data => this.setState({ deviceId: data.device_id })}
-              onPlayerDeviceSelected={() => console.log("device selected")}
+              onPlayerDeviceSelected={() => this.setState({ playerSelected: true })}
               onPlayerStateChange={playerState => this.setState({ playerState: playerState })}
-              onPlayerError={playerError => console.log(playerError)} />
+              onPlayerError={playerError => console.error(playerError)}>
+            
+              {!playerLoaded && <h1>Loading Player</h1>}
+              {!playerSelected && playerLoaded && <h1>Waiting for device to be selected</h1>}
+              {playerSelected && playerLoaded &&
+                 <h1>Now
+              }
+            </WebPlayback>
           }
         </main>
 
