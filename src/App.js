@@ -8,8 +8,10 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
         </div>
+        <a href="https://beta.developer.spotify.com/documentation/web-playback-sdk" className="App-product web-playback-sdk">
+          Web Playback SDK
+        </a>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
