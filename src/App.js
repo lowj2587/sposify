@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WebPlayback from './Spotify/WebPlayback.js';
+import WebPlaybackReact from './Spotify/WebPlaybackReact.js';
 
 import './App.css';
 import Header from './layout/Header.js';
@@ -25,10 +25,10 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    LoginCallback(
-      this.onSuccessfulAuthorization.bind(this),
-      this.onAccessTokenExpiration.bind(this)
-    );
+    LoginCallback({
+      onSuccessfulAuthorization: this.onSuccessfulAuthorization.bind(this),
+      onAccessTokenExpiration: this.onAccessTokenExpiration.bind(this)
+    });
   }
   
   onSuccessfulAuthorization(accessToken) {
@@ -59,7 +59,7 @@ export default class App extends Component {
     } = this.state;
     
     let webPlaybackSdkProps = {
-      playerName: "Bilawal's React Player",
+      playerName: "Spotify React Player",
       playerInitialVolume: 1.0,
       playerAutoConnect: true,
       userAccessToken: accessToken,
@@ -76,27 +76,31 @@ export default class App extends Component {
       
         <main>
           {!accessToken && <IntroScreen />}
-          {accessToken && <WebPlayback {...webPlaybackSdkProps} />}
-          
-          {accessToken && !playerLoaded &&
+          {accessToken &&
             <div>
-              <h2 className="action-orange">Loading Player</h2>
-            </div>
-          }
+              <WebPlaybackReact {...webPlaybackSdkProps} />
+      
+              {!playerLoaded &&
+                <div>
+                  <h2 className="action-orange">Loading Player</h2>
+                </div>
+              }
 
-          {accessToken && playerLoaded && !playerSelected && 
-            <div>
-              <h2 className="action-green">Loading Player</h2>
-              <h2 className="action-orange">Waiting for device to be selected</h2>
-            </div>
-          }
+              {playerLoaded && !playerSelected && 
+                <div>
+                  <h2 className="action-green">Loading Player</h2>
+                  <h2 className="action-orange">Waiting for device to be selected</h2>
+                </div>
+              }
 
-          {accessToken && playerLoaded && playerSelected &&
-            <div>
-              <h2 className="action-green">Loading Player</h2>
-              <h2 className="action-green">Waiting for device to be selected</h2>
-              <h2 className="action-green">Start playing music!</h2>
-              <NowPlayingScreen playerState={playerState} />
+              {playerLoaded && playerSelected &&
+                <div>
+                  <h2 className="action-green">Loading Player</h2>
+                  <h2 className="action-green">Waiting for device to be selected</h2>
+                  <h2 className="action-green">Start playing music!</h2>
+                  <NowPlayingScreen playerState={playerState} />
+                </div>
+              }
             </div>
           }
         </main>

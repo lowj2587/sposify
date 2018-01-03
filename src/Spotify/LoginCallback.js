@@ -1,4 +1,4 @@
-export default (onSuccessfulAuthorization, onAccessTokenExpiration) => {
+export default (callbacks) => {
   let { location: {hash} } = window;
   let hashExists = hash.length > 0;
   let hashObj = hash.substring(1).split('&').reduce((initial, item) => {
@@ -13,14 +13,14 @@ export default (onSuccessfulAuthorization, onAccessTokenExpiration) => {
     window.location.hash = '';
         
     // Let us know it's a successful authorization
-    if (typeof onSuccessfulAuthorization !== "undefined") {
-      onSuccessfulAuthorization(hashObj.access_token);
+    if (typeof callbacks.onSuccessfulAuthorization !== "undefined") {
+      callbacks.onSuccessfulAuthorization(hashObj.access_token);
     }
 
     // Let us know when the access token expires
     setTimeout(() => {
-      if (typeof onAccessTokenExpiration !== "undefined") {
-        onAccessTokenExpiration();
+      if (typeof callbacks.onAccessTokenExpiration !== "undefined") {
+        callbacks.onAccessTokenExpiration();
       }
     }, hashObj.expires_in * 1000);
 
