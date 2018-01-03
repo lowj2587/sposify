@@ -79,15 +79,23 @@ export default class App extends Component {
           {accessToken && <WebPlayback {...webPlaybackSdkProps} />}
           
           {accessToken && !playerLoaded &&
-            <h1 className="action-orange">Loading Player ...</h1>
-            <h1 className="action-red">Waiting for device to be selected</h1>
-            <h1 className="action-red">Start playing music!</h1>
+            <div>
+              <h2 className="action-orange">Loading Player</h2>
+            </div>
           }
 
-          {accessToken && playerLoaded && !playerSelected && <h1>Waiting for device to be selected</h1>}
+          {accessToken && playerLoaded && !playerSelected && 
+            <div>
+              <h2 className="action-green">Loading Player</h2>
+              <h2 className="action-orange">Waiting for device to be selected</h2>
+            </div>
+          }
+
           {accessToken && playerLoaded && playerSelected &&
             <div>
-              <h1>Now Playing</h1>
+              <h2 className="action-green">Loading Player</h2>
+              <h2 className="action-green">Waiting for device to be selected</h2>
+              <h2 className="action-green">Start playing music!</h2>
               <NowPlayingScreen playerState={playerState} />
             </div>
           }

@@ -21,7 +21,14 @@ export default class NowPlaying extends React.Component {
     } = playerState.track_window.current_track;
 
     return (
-      <div>
+      <div className="panel panel-default">
+        <div className="panel-heading">Panel heading without title</div>
+        <div className="panel-body">
+          Panel content
+        </div>
+      </div>
+
+      <div className="App-now-playing">
         <img src={album_image} alt={track_name} />
         <h3><a href={track_uri}>{track_name}</a> by <a href={artist_uri}>{artist_name}</a></h3>
         <h3><a href={album_uri}>{album_name}</a></h3>
