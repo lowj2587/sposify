@@ -35,7 +35,9 @@ export default class WebPlayback extends Component {
   }
 
   setupWebPlaybackEvents() {
-    this.webPlaybackInstance = new Spotify.Player({
+    let { Player } = window.Spotify;
+
+    this.webPlaybackInstance = new Player({
       name: this.props.playerName,
       volume: this.props.playerInitialVolume,
       getOAuthToken: callback => { callback(this.props.userAccessToken); }
@@ -62,7 +64,7 @@ export default class WebPlayback extends Component {
     });
 
     this.webPlaybackInstance.on("ready", data => {
-      if (this.props.onPlayerReady) this.props.onPlayerReady(data);
+      this.props.onPlayerWaitingForDevice(data);
     });
 
     if (this.props.playerAutoConnect) {
@@ -70,16 +72,21 @@ export default class WebPlayback extends Component {
     }
   }
 
-  componentWillMount() {
+  setupWaitingForDevice() {
+    this.webPlaybackInstance.on("ready", data => {
+      this.props.onPlayerWaitingForDevice(data);
+    });
+  }
+
+  async componentWillMount() {
     this.props.onPlayerLoading();
     await this.waitForSpotify();
     this.setupWebPlaybackEvents();
-    this.props.onPlayerWaitingForDevice();
     await this.waitForDeviceToBeSelected();
     this.props.onPlayerDeviceSelected();
   }
 
   render() {
-    
+    return (<h1>Hi world</h1>);
   }
 };
