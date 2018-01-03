@@ -55,12 +55,6 @@ class WebPlaybackWaitingForDevice extends Component {
   }
 }
 
-class WebPlaybackScreen extends Component {
-  render = () => {
-    return this.props.children;
-  }
-}
-
 class WebPlayback extends Component {
   interval = null
 

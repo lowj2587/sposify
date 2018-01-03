@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {
-  WebPlaybackScreen as Screen,
-  WebPlayback
-} from './Spotify/React.js';
+import WebPlayback from './Spotify/WebPlayback.js';
 
 import './App.css';
 import Header from './layout/Header.js';
@@ -55,31 +52,12 @@ export default class App extends Component {
               playerInitialVolume={1.0}
               playerAutoConnect={true}
               userAccessToken={this.state.accessToken}
-              onPlayerReady={data => this.setState({ deviceId: data.device_id })}
-              onPlayerStateChange={playerState => this.setState({ playerState: playerState })}
-
-              onPlayerError={playerError => console.log(playerError)}
               onPlayerLoading={() => console.log("loaded")}
-              onPlayerWaitingForDevice={() => console.log("waiting for device")}
-              onPlayer>
-
-              <Screen state="Error">
-                <h3>Error</h3>
-              </Screen>
-
-              <Screen state="Loading">
-                <h3>Loading Web Playback SDK</h3>
-              </Screen>
-
-              <Screen state="WaitingForDevice">
-                <h3>Waiting for Device to be Selected</h3>
-              </Screen>
-
-              <Screen state="Player">
-                <h1>Web Playback SDK + React</h1>
-                {this.state.playerState && <NowPlayingScreen />}
-              </Screen>
-            </WebPlayback>}
+              onPlayerWaitingForDevice={data => this.setState({ deviceId: data.device_id })}
+              onPlayerDeviceSelected={() => console.log("device selected")}
+              onPlayerStateChange={playerState => this.setState({ playerState: playerState })}
+              onPlayerError={playerError => console.log(playerError)} />
+          }
         </main>
 
         <Footer />
