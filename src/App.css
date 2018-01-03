@@ -34,10 +34,6 @@
   padding: 50px 0 0;
 }
 
-.App-footer > p {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 .App-footer > p > a {
   color: inherit;
   text-decoration: underline;

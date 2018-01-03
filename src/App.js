@@ -7,10 +7,10 @@ import AuthorizeScreen from './screens/Authorize.js';
 
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <div className="App container">
+      <div className="App">
         <Header />
       
         <main>
@@ -21,6 +21,4 @@ class App extends Component {
       </div>
     );
   }
-}
-
-export default App;
+};
