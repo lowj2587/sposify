@@ -31,8 +31,10 @@ export default class App extends Component {
     );
   }
   
-  onSuccessfulAuthorization(access_token) {
-    this.setState({ accessToken: access_token });
+  onSuccessfulAuthorization(accessToken) {
+    this.setState({
+      accessToken: accessToken
+    });
   }
   
   onAccessTokenExpiration() {
@@ -53,31 +55,26 @@ export default class App extends Component {
       playerState
     } = this.state;
     
+    let webPlaybackSdkProps = {
+      playerName: "Bilawal's React Player",
+      playerInitialVolume: 1.0,
+      playerAutoConnect: true,
+      userAccessToken: accessToken,
+      onPlayerLoading: (() => this.setState({ playerLoaded: true })),
+      onPlayerWaitingForDevice: (data => this.setState({ deviceId: data.device_id })),
+      onPlayerDeviceSelected: (() => this.setState({ playerSelected: true })),
+      onPlayerStateChange: (playerState => this.setState({ playerState: playerState })),
+      onPlayerError: (playerError => console.error(playerError))
+    };
+    
     return (
       <div className="App">
         <Header />
       
         <main>
           {!accessToken && <IntroScreen />}
-          {accessToken &&
-            <WebPlayback
-              playerName="Bilawal's React Player"
-              playerInitialVolume={1.0}
-              playerAutoConnect={true}
-              userAccessToken={accessToken}
-              onPlayerLoading={() => this.setState({ playerLoaded: true })}
-              onPlayerWaitingForDevice={data => this.setState({ deviceId: data.device_id })}
-              onPlayerDeviceSelected={() => this.setState({ playerSelected: true })}
-              onPlayerStateChange={playerState => this.setState({ playerState: playerState })}
-              onPlayerError={playerError => console.error(playerError)}>
-            
-              {!playerLoaded && <h1>Loading Player</h1>}
-              {!playerSelected && playerLoaded && <h1>Waiting for device to be selected</h1>}
-              {playerSelected && playerLoaded &&
-                 <h1>Now
-              }
-            </WebPlayback>
-          }
+          {accessToken && <WebPlayback {...webPlaybackSdkProps} />}
+          {accessToken && !playerLoaded && <h1>Loading Player</h1>}
         </main>
 
         <Footer />

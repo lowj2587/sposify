@@ -100,6 +100,6 @@ export default class WebPlayback extends Component {
   }
 
   render() {
-    return this.props.children;
+    return null;
   }
 };
