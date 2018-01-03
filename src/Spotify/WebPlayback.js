@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class WebPlayback extends Component {
+export default class WebPlayback extends React.Component {
   deviceSelectedInterval = null
   webPlaybackInstance = null
 

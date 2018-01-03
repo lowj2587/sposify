@@ -41,8 +41,11 @@ export default class App extends Component {
     this.setState({
       deviceId: null,
       accessToken: null,
+      playerLoaded: false,
+      playerSelected: false,
       playerState: null
     });
+
     console.error("The access token has expired.");
   }
   
@@ -74,7 +77,20 @@ export default class App extends Component {
         <main>
           {!accessToken && <IntroScreen />}
           {accessToken && <WebPlayback {...webPlaybackSdkProps} />}
-          {accessToken && !playerLoaded && <h1>Loading Player</h1>}
+          
+          {accessToken && !playerLoaded &&
+            <h1 className="action-orange">Loading Player ...</h1>
+            <h1 className="action-red">Waiting for device to be selected</h1>
+            <h1 className="action-red">Start playing music!</h1>
+          }
+
+          {accessToken && playerLoaded && !playerSelected && <h1>Waiting for device to be selected</h1>}
+          {accessToken && playerLoaded && playerSelected &&
+            <div>
+              <h1>Now Playing</h1>
+              <NowPlayingScreen playerState={playerState} />
+            </div>
+          }
         </main>
 
         <Footer />

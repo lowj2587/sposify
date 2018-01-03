@@ -6,9 +6,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-// Polyfills
-import './polyfill/DragAndDrop.js';
-
 // Start the App!
 ReactDOM.render(
   <App />,
