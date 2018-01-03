@@ -1,5 +1,5 @@
 .App {
-  font-family:
+  font-family: Circular,Helvetica,Arial,sans-serif;
   text-align: center;
 }
 
@@ -22,6 +22,10 @@
   padding: 10px;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.App-product:hover {
+  color: #FFF;
 }
 
 .App-product.web-playback-sdk {
