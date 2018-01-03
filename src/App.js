@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import Header from './layout/Header.js';
 import HeaderProduct from './layout/HeaderProduct.js';
+import Footer from './layout/Footer.js';
+
+import AuthorizeScreen from './screens/Authorize.js';
 
 import './App.css';
 
@@ -11,11 +14,12 @@ class App extends Component {
       <div className="App">
         <Header />
         <HeaderProduct />
-        <main>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
+      
+        <main className="container">
+          <AuthorizeScreen />
         </main>
+
+        <Footer />
       </div>
     );
   }

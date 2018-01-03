@@ -25,7 +25,7 @@
 }
 .App-product:hover, .App-product:active, .App-product:focus { color: #FFF; }
 .App-product.web-playback-sdk { background: #af2896; }
-.App-product > .beta { background: orange; }
+.App-product > .beta { color: orange; }
 
 .App-intro {
   font-size: large;
@@ -34,10 +34,6 @@
 .App-footer {
   padding: 50px 0 0;
   text-align: center;
-}
-
-.App-footer > p {
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .App-footer > p > a {

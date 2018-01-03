@@ -5,6 +5,13 @@ body {
   font-family: sans-serif;
 }
 
+main {
+  background: #121212;
+  border-radius: 30px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
 .spotify-green {
   color: #1db954;
 }
