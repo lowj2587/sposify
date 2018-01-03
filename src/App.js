@@ -1,23 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import Header from './layout/Header.js';
+import HeaderProduct from './layout/HeaderProduct.js';
+
 import './App.css';
-
-const Header = () => {
-  return (
-    <div className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-    </div>
-  );
-};
-
-const HeaderProduct = (props) => {
-  console.log(props);
-  return (
-    <a href="https://beta.developer.spotify.com/documentation/web-playback-sdk" className="App-product web-playback-sdk">
-      Web Playback SDK
-    </a>
-  );
-};
 
 class App extends Component {
   render() {
