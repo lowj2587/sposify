@@ -2,6 +2,7 @@ import React from 'react';
 
 export default class WebPlayback extends React.Component {
   deviceSelectedInterval = null
+  statePollingInterval = null
   webPlaybackInstance = null
 
   state = {
@@ -59,8 +60,18 @@ export default class WebPlayback extends React.Component {
       this.props.onPlayerError(e.message);
     });
 
-    this.webPlaybackInstance.on("player_state_changed", state => {
-      this.props.onPlayerStateChange(state);
+    this.webPlaybackInstance.on("player_state_changed", async state => {
+      if (state) {
+        this.props.onPlayerStateChange(state);
+      } else {
+        let {
+          _options: { id: device_id }
+        } = this.webPlaybackInstance;
+
+        this.props.onPlayerWaitingForDevice({ device_id: device_id });
+        await this.waitForDeviceToBeSelected();
+        this.props.onPlayerDeviceSelected();
+      }
     });
 
     this.webPlaybackInstance.on("ready", data => {

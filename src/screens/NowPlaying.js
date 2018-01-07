@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class NowPlaying extends React.Component {
-  render = () => {
+  render() {
     let { playerState } = this.props;
     let { position: position_ms } = playerState;
     let {

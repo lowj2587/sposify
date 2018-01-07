@@ -2,7 +2,7 @@ import React from 'react';
 import Login from '../Spotify/Login.js';
 
 export default class IntroScreen extends React.Component {
-  buttonClick = (e) => {
+  buttonClick(e) {
     e.preventDefault();
     Login.logInWithSpotify();
   }
@@ -13,7 +13,7 @@ export default class IntroScreen extends React.Component {
     glitch: "https://glitch.com/edit/#!/spotify-web-playback-react"
   };
 
-  render = () => {
+  render() {
     return (
       <div>
         <p>Here's a sample app built with the <a target="_blank" href={this.links.announcement}>Spotify Web Playback SDK</a> & <a target="_blank" href={this.links.create_react_app}>Create React App</a> on <a href={this.links.glitch}>Glitch</a>.</p>
