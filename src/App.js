@@ -61,10 +61,11 @@ export default class App extends Component {
     let webPlaybackSdkProps = {
       playerName: "Spotify React Player",
       playerInitialVolume: 1.0,
+      playerRefreshRateMs: 100,
       playerAutoConnect: true,
       userAccessToken: accessToken,
       onPlayerLoading: (() => this.setState({ playerLoaded: true })),
-      onPlayerWaitingForDevice: (data => this.setState({ deviceId: data.device_id })),
+      onPlayerWaitingForDevice: (data => this.setState({ playerSelected: false, deviceId: data.device_id })),
       onPlayerDeviceSelected: (() => this.setState({ playerSelected: true })),
       onPlayerStateChange: (playerState => this.setState({ playerState: playerState })),
       onPlayerError: (playerError => console.error(playerError))
@@ -98,7 +99,7 @@ export default class App extends Component {
                   <h2 className="action-green">Loading Player</h2>
                   <h2 className="action-green">Waiting for device to be selected</h2>
                   <h2 className="action-green">Start playing music!</h2>
-                  <NowPlayingScreen playerState={playerState} />
+                  {playerState && <NowPlayingScreen playerState={playerState} />}
                 </div>
               }
             </div>

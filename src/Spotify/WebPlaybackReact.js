@@ -9,6 +9,21 @@ export default class WebPlayback extends React.Component {
     playerReady: false,
     playerSelected: false
   }
+    
+  async handleState(state) {
+    if (state) {
+      this.props.onPlayerStateChange(state);
+    } else {
+      let {
+        _options: { id: device_id }
+      } = this.webPlaybackInstance;
+
+      this.clearStatePolling();
+      this.props.onPlayerWaitingForDevice({ device_id: device_id });
+      await this.waitForDeviceToBeSelected();
+      this.props.onPlayerDeviceSelected();
+    }
+  }
 
   waitForSpotify() {
     return new Promise(resolve => {
@@ -26,6 +41,7 @@ export default class WebPlayback extends React.Component {
         if (this.webPlaybackInstance) {
           this.webPlaybackInstance.getCurrentState().then(state => {
             if (state !== null) {
+              this.startStatePolling();
               clearInterval(this.deviceSelectedInterval);
               resolve(state);
             }
@@ -33,6 +49,17 @@ export default class WebPlayback extends React.Component {
         }
       });
     });
+  }
+
+  startStatePolling() {
+    this.statePollingInterval = setInterval(async () => {
+      let state = await this.webPlaybackInstance.getCurrentState();
+      await this.handleState(state);
+    }, this.props.playerRefreshRateMs || 1000);
+  }
+
+  clearStatePolling() {
+    clearInterval(this.statePollingInterval);
   }
 
   async setupWebPlaybackEvents() {
@@ -61,17 +88,7 @@ export default class WebPlayback extends React.Component {
     });
 
     this.webPlaybackInstance.on("player_state_changed", async state => {
-      if (state) {
-        this.props.onPlayerStateChange(state);
-      } else {
-        let {
-          _options: { id: device_id }
-        } = this.webPlaybackInstance;
-
-        this.props.onPlayerWaitingForDevice({ device_id: device_id });
-        await this.waitForDeviceToBeSelected();
-        this.props.onPlayerDeviceSelected();
-      }
+      await this.handleState(state);
     });
 
     this.webPlaybackInstance.on("ready", data => {
