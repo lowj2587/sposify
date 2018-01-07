@@ -94,12 +94,20 @@ export default class App extends Component {
                 </div>
               }
 
-              {playerLoaded && playerSelected &&
+              {playerLoaded && playerSelected && !playerState &&
+                <div>
+                  <h2 className="action-green">Loading Player</h2>
+                  <h2 className="action-green">Waiting for device to be selected</h2>
+                  <h2 className="action-orange">Start playing music ...</h2>
+                </div>
+              }
+
+              {playerLoaded && playerSelected && playerState &&
                 <div>
                   <h2 className="action-green">Loading Player</h2>
                   <h2 className="action-green">Waiting for device to be selected</h2>
                   <h2 className="action-green">Start playing music!</h2>
-                  {playerState && <NowPlayingScreen playerState={playerState} />}
+                  <NowPlayingScreen playerState={playerState} />
                 </div>
               }
             </div>

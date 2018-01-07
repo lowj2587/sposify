@@ -2,8 +2,10 @@ import React from 'react';
 
 export default class NowPlaying extends React.Component {
   render() {
-    let { playerState } = this.props;
-    let { position: position_ms } = playerState;
+    let {
+      playerState,
+      playerState: { position: position_ms }
+    } = this.props;
     let {
       id,
       uri: track_uri,
