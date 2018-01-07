@@ -15,8 +15,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {};
 export default class App extends Component {
   state = {
     // User's session credentials
-    deviceId: null,
-    accessToken: null,
+    userDeviceId: null,
+    userAccessToken: null,
 
     // Player state
     playerLoaded: false,
@@ -33,26 +33,26 @@ export default class App extends Component {
   
   onSuccessfulAuthorization(accessToken) {
     this.setState({
-      accessToken: accessToken
+      userAccessToken: accessToken
     });
   }
   
   onAccessTokenExpiration() {
     this.setState({
-      deviceId: null,
-      accessToken: null,
+      userDeviceId: null,
+      userAccessToken: null,
       playerLoaded: false,
       playerSelected: false,
       playerState: null
     });
 
-    console.error("The access token has expired.");
+    console.error("The user access token has expired.");
   }
   
   render() {
     let {
-      deviceId,
-      accessToken,
+      userDeviceId,
+      userAccessToken,
       playerLoaded,
       playerSelected,
       playerState
@@ -63,9 +63,9 @@ export default class App extends Component {
       playerInitialVolume: 1.0,
       playerRefreshRateMs: 100,
       playerAutoConnect: true,
-      userAccessToken: accessToken,
+      userAccessToken: userAccessToken,
       onPlayerLoading: (() => this.setState({ playerLoaded: true })),
-      onPlayerWaitingForDevice: (data => this.setState({ playerSelected: false, deviceId: data.device_id })),
+      onPlayerWaitingForDevice: (data => this.setState({ playerSelected: false, userDeviceId: data.device_id })),
       onPlayerDeviceSelected: (() => this.setState({ playerSelected: true })),
       onPlayerStateChange: (playerState => this.setState({ playerState: playerState })),
       onPlayerError: (playerError => console.error(playerError))
@@ -76,8 +76,8 @@ export default class App extends Component {
         <Header />
       
         <main>
-          {!accessToken && <IntroScreen />}
-          {accessToken &&
+          {!userAccessToken && <IntroScreen />}
+          {userAccessToken &&
             <div>
               <WebPlaybackReact {...webPlaybackSdkProps} />
       
