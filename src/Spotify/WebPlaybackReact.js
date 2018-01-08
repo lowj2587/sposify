@@ -68,9 +68,11 @@ export default class WebPlayback extends Component {
     this.webPlaybackInstance = new Player({
       name: this.props.playerName,
       volume: this.props.playerInitialVolume,
-      getOAuthToken: callback => {
-        if (this.p
-        callback(this.props.userAccessToken);
+      getOAuthToken: async callback => {
+        if (typeof this.props.onPlayerRequestAccessToken !== "undefined") {
+          let userAccessToken = await this.props.onPlayerRequestAccessToken();
+          callback(userAccessToken);
+        }
       }
     });
     

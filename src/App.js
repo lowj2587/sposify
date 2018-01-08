@@ -63,7 +63,7 @@ export default class App extends Component {
       playerInitialVolume: 1.0,
       playerRefreshRateMs: 100,
       playerAutoConnect: true,
-      userAccessToken: userAccessToken,
+      onPlayerRequestAccessToken: (() => userAccessToken),
       onPlayerLoading: (() => this.setState({ playerLoaded: true })),
       onPlayerWaitingForDevice: (data => this.setState({ playerSelected: false, userDeviceId: data.device_id })),
       onPlayerDeviceSelected: (() => this.setState({ playerSelected: true })),
