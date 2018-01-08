@@ -78,9 +78,7 @@ export default class App extends Component {
         <main>
           {!userAccessToken && <IntroScreen />}
           {userAccessToken &&
-            <div>
-              <WebPlaybackReact {...webPlaybackSdkProps} />
-      
+            <WebPlaybackReact {...webPlaybackSdkProps}>
               {!playerLoaded &&
                 <div>
                   <h2 className="action-orange">Loading Player</h2>
@@ -110,7 +108,7 @@ export default class App extends Component {
                   <NowPlayingScreen playerState={playerState} />
                 </div>
               }
-            </div>
+            </WebPlaybackReact>
           }
         </main>
 
