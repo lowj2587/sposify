@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import WebPlaybackReact from './Spotify/WebPlaybackReact.js';
 
 import './App.css';
@@ -80,33 +80,31 @@ export default class App extends Component {
           {userAccessToken &&
             <WebPlaybackReact {...webPlaybackSdkProps}>
               {!playerLoaded &&
-                <div>
-                  <h2 className="action-orange">Loading Player</h2>
-                </div>
+                <h2 className="action-orange">Loading Player</h2>
               }
 
               {playerLoaded && !playerSelected && 
-                <div>
+                <Fragment>
                   <h2 className="action-green">Loading Player</h2>
                   <h2 className="action-orange">Waiting for device to be selected</h2>
-                </div>
+                </Fragment>
               }
 
               {playerLoaded && playerSelected && !playerState &&
-                <div>
+                <Fragment>
                   <h2 className="action-green">Loading Player</h2>
                   <h2 className="action-green">Waiting for device to be selected</h2>
                   <h2 className="action-orange">Start playing music ...</h2>
-                </div>
+                </Fragment>
               }
 
               {playerLoaded && playerSelected && playerState &&
-                <div>
+                <Fragment>
                   <h2 className="action-green">Loading Player</h2>
                   <h2 className="action-green">Waiting for device to be selected</h2>
                   <h2 className="action-green">Start playing music!</h2>
                   <NowPlayingScreen playerState={playerState} />
-                </div>
+                </Fragment>
               }
             </WebPlaybackReact>
           }

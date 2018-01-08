@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class NowPlaying extends React.Component {
+export default class NowPlaying extends Component {
   render() {
     let {
       playerState,

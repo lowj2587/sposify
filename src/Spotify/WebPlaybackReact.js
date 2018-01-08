@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 
-export default class WebPlayback extends React.Component {
+export default class WebPlayback extends Component {
   deviceSelectedInterval = null
   statePollingInterval = null
   webPlaybackInstance = null
@@ -68,7 +68,10 @@ export default class WebPlayback extends React.Component {
     this.webPlaybackInstance = new Player({
       name: this.props.playerName,
       volume: this.props.playerInitialVolume,
-      getOAuthToken: callback => { callback(this.props.userAccessToken); }
+      getOAuthToken: callback => {
+        if (this.p
+        callback(this.props.userAccessToken);
+      }
     });
     
     this.webPlaybackInstance.on("initialization_error", e => {
@@ -128,6 +131,6 @@ export default class WebPlayback extends React.Component {
   }
 
   render() {
-    return (<div>{this.props.children}</div>);
+    return (<Fragment>{this.props.children}</Fragment>);
   }
 };
