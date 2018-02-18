@@ -1,19 +1,17 @@
 export default {
   logInWithSpotify: (() => {
     let {
-      SPOTIFY_CLIENT_ID,
-      SPOTIFY_CALLBACK_URL,
+      REACT_APP_SPOTIFY_CLIENT_ID,
+      REACT_APP_SPOTIFY_CALLBACK_URL,
+      REACT_APP_SPOTIFY_SCOPES,
     } = process.env;
-    
-    let client_id      = SPOTIFY_CLIENT_ID;
-    let redirect_uri   = SPOTIFY_CALLBACK_URL;
-    let scopes         = SPOTIFY_C;
-    let scopes_encoded = scopes.replace(" ", "%20");
+
+    let scopes_encoded = REACT_APP_SPOTIFY_SCOPES.replace(" ", "%20");
 
     window.location = [
       "https://accounts.spotify.com/authorize",
-      `?client_id=${client_id}`,
-      `&redirect_uri=${redirect_uri}`,
+      `?client_id=${REACT_APP_SPOTIFY_CLIENT_ID}`,
+      `&redirect_uri=${REACT_APP_SPOTIFY_CALLBACK_URL}`,
       `&scope=${scopes_encoded}`,
       "&response_type=token",
       "&show_dialog=true"
