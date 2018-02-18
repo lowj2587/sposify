@@ -31,10 +31,8 @@ export default class App extends Component {
     });
   }
   
-  onSuccessfulAuthorization(accessToken) {
-    this.setState({
-      userAccessToken: accessToken
-    });
+  onSuccessfulAuthorization(userAccessToken) {
+    this.setState({ userAccessToken });
   }
   
   onAccessTokenExpiration() {
@@ -65,9 +63,9 @@ export default class App extends Component {
       playerAutoConnect: true,
       onPlayerRequestAccessToken: (() => userAccessToken),
       onPlayerLoading: (() => this.setState({ playerLoaded: true })),
-      onPlayerWaitingForDevice: (data => this.setState({ playerSelected: false, userDeviceId: data.device_id })),
+      onPlayerWaitingForDevice: (({ device_id }) => this.setState({ playerSelected: false, userDeviceId: device_id })),
       onPlayerDeviceSelected: (() => this.setState({ playerSelected: true })),
-      onPlayerStateChange: (playerState => this.setState({ playerState: playerState })),
+      onPlayerStateChange: (playerState => this.setState({ playerState })),
       onPlayerError: (playerError => console.error(playerError))
     };
     

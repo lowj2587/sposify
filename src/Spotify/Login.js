@@ -1,8 +1,13 @@
 export default {
   logInWithSpotify: (() => {
-    let client_id      = "bad9e04cf07e4ac89c75a71999f18955";
-    let redirect_uri   = "https://spotify-web-playback-react.glitch.me";
-    let scopes         = "streaming user-read-birthdate user-read-email user-read-private user-modify-playback-state";
+    let {
+      SPOTIFY_CLIENT_ID,
+      SPOTIFY_CALLBACK_URL,
+    } = process.env;
+    
+    let client_id      = SPOTIFY_CLIENT_ID;
+    let redirect_uri   = SPOTIFY_CALLBACK_URL;
+    let scopes         = SPOTIFY_C;
     let scopes_encoded = scopes.replace(" ", "%20");
 
     window.location = [

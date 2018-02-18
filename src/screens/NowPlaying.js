@@ -6,6 +6,7 @@ export default class NowPlaying extends Component {
       playerState,
       playerState: { position: position_ms }
     } = this.props;
+
     let {
       id,
       uri: track_uri,
