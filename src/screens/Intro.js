@@ -2,10 +2,9 @@ import React, { Component, Fragment } from 'react';
 import Login from '../Spotify/Login.js';
 
 export default class IntroScreen extends Component {
-  buttonClick(e) {
-    e.preventDefault();
+  buttonClick() {
     Login.logInWithSpotify();
-  }
+  };
 
   links = {
     announcement: "https://beta.developer.spotify.com/community/news/2017/11/20/announcing-the-new-spotify-web-playback-sdk-beta/",
