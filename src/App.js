@@ -85,6 +85,7 @@ export default class App extends Component {
                 <Fragment>
                   <h2 className="action-green">Loading Player</h2>
                   <h2 className="action-orange">Waiting for device to be selected</h2>
+                  <p>On a Spotify Client, open the device picker, and choose "Spotify React Player".</p>
                 </Fragment>
               }
 
