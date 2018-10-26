@@ -12,3 +12,7 @@
 .App-logo {
   height: 40px;
 }
+
+.App .secondaryNav.secondaryNav-webApi {
+  background: #f59b23;
+}

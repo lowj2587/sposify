@@ -3,9 +3,14 @@ import logo from './../logo.svg';
 
 export default () => {
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <span className="visually-hidden">Spotify for Developers</span>
-    </header>
+    <React.Fragment>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <span className="visually-hidden">Spotify for Developers</span>
+      </header>
+      <div className="secondaryNav secondaryNav-webApi">
+        <p>Web API</p>
+      </div>
+    </React.Fragment>    
   );
 };

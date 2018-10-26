@@ -11,7 +11,7 @@ export default class App extends Component {
         <Header />
       
         <main>
-          Hello world.
+          <h3>Loading ...</h3>
         </main>
 
         <Footer />
