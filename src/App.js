@@ -12,7 +12,7 @@ export default class App extends Component {
           <span className="visually-hidden">Spotify for Developers</span>
         </header>
         <div className="secondaryNav secondaryNav-webApi">
-          <h3>Web API Reference <span className="beta">alpha</span></h3>
+          <h2>Web API Reference <span className="beta">alpha</span></h2>
         </div>
       
         <main>
