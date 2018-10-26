@@ -13,6 +13,16 @@
   height: 40px;
 }
 
+.App .secondaryNav {
+  padding: 20px;
+}
+
 .App .secondaryNav.secondaryNav-webApi {
   background: #f59b23;
+  color: #fff;
+}
+
+.App .secondaryNav.secondaryNav-webApi h3 {
+  padding: 0;
+  margin: 0;
 }
