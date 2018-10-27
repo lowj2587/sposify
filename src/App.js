@@ -1,16 +1,32 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import './App.css';
 import logo from './logo.svg';
+
+import { getDocumentationFromApi } from './services/DocumentationAPI.js';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     
-    this.
+    this.state = {
+      status: 'loading',
+      documentation: null
+    };
+  }
+  
+  componentWillMount() {
+    getDocumentationFromApi().then(documentation => {
+      this.setState({ status: 'loaded', documentation });
+    }).catch(err => {
+      console.error({ err });
+      this.setState({ status: 'error' });
+    });
   }
   
   render() {
+    const { status, documentation } = this.state;
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -22,7 +38,9 @@ export default class App extends Component {
         </div>
       
         <main>
-          <h3>Loading ...</h3>
+          {status === 'loading' && <h3>Loading ...</h3>}
+          {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
+          {status === 'loaded' && <h3>Loaded. {JSON.stringify(documentation)}</h3>}
         </main>
 
         <footer className="App-footer">
