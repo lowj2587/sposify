@@ -22,22 +22,21 @@
   color: #fff;
 }
 
-.App .secondaryNav.secondaryNav-webApi h2 {
+.App .secondaryNav.secondaryNav-webApi h1 {
   padding: 0;
   margin: 0;
-  position: relative;
 }
 
-.App .secondaryNav.secondaryNav-webApi h2 > span.beta {
+.App .secondaryNav.secondaryNav-webApi h1 > span.beta {
   display: inline-block;
-  position: absolute;
-  top: 6px;
-  padding: 5px;
+  padding: 5px 10px;
   margin-left: 10px;
+  position: relative;
+  top: -10px;
   
   background: rgba(0, 0, 0, 0.5);
   
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 18px;
   letter-spacing: 0;
 }

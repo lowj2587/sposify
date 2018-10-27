@@ -3,7 +3,13 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import logo from './logo.svg';
 
-export default class App extends Component {  
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.
+  }
+  
   render() {
     return (
       <div className="App">
@@ -12,7 +18,7 @@ export default class App extends Component {
           <span className="visually-hidden">Spotify for Developers</span>
         </header>
         <div className="secondaryNav secondaryNav-webApi">
-          <h2>Web API Reference <span className="beta">alpha</span></h2>
+          <h1>Web API Reference <span className="beta">alpha</span></h1>
         </div>
       
         <main>
