@@ -34,7 +34,7 @@ export default class App extends Component {
           <span className="visually-hidden">Spotify for Developers</span>
         </header>
         <div className="secondaryNav secondaryNav-webApi">
-          <h1>Web API Reference <span className="beta">alpha</span></h1>
+          <h1>Web API Reference <span className="version">BETA.0.0.1</span></h1>
         </div>
       
         <main>

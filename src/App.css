@@ -14,7 +14,7 @@
 }
 
 .App .secondaryNav {
-  padding: 20px;
+  padding: 30px;
 }
 
 .App .secondaryNav.secondaryNav-webApi {
@@ -27,12 +27,12 @@
   margin: 0;
 }
 
-.App .secondaryNav.secondaryNav-webApi h1 > span.beta {
+.App .secondaryNav.secondaryNav-webApi h1 > span.version {
   display: inline-block;
   padding: 5px 10px;
   margin-left: 10px;
   position: relative;
-  top: -10px;
+  top: -8px;
   
   background: rgba(0, 0, 0, 0.3);
   
