@@ -24,7 +24,9 @@ export default class App extends Component {
   
   componentWillMount() {
     getDocumentationFromApi().then(documentation => {
-      const documentationCategories = sidebarFromDocumentation(documentation);
+      const {
+        categories: documentationCategories
+      } = sidebarFromDocumentation(documentation);
       
       this.setState({ status: 'loaded', documentation, documentationCategories });      
     }).catch(err => {
@@ -55,14 +57,15 @@ export default class App extends Component {
                 <ul>
                   <li>
                     <a href="#">Introduction</a>
-                    <ul>
-                      <li></li>
-                    </ul>
                   </li>
                   <li>
                     <a href="#">Docs</a>
                     <ul>
-                      <li></li>
+                      {documentationCategories.map(documentationCategory => (
+                        <li>
+                          <a href={documentationCategory.categoryUrl}>{documentationCategory.categoryName}</a>
+                        </li>
+                      ))}
                     </ul>
                   </li>
                   <li>
