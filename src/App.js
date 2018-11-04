@@ -1,8 +1,20 @@
+// React
 import React, { Component } from 'react';
 
+// React Router
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from "react-router-dom";
+
+// Assets
 import './App.css';
 import logo from './logo.svg';
 
+// Documentation API
 import { getDocumentationFromApi } from './services/getDocumentationFromApi.js';
 
 export default class App extends Component {
@@ -13,6 +25,22 @@ export default class App extends Component {
       status: 'loading',
       documentation: null
     };
+    
+    this.releaseVersion = 'beta-0.0.1';
+    this.sidebarItems = [
+      {
+        path: "/docs",
+        render: () => <h1>/docs</h1>,
+      },
+      {
+        path: "/docs/endpoints/:endpoint",
+        render: () => <h1>/docs/endpoints/:endpoint</h1>,
+      },
+      {
+        path: "/docs/endpoints/:endpoint/objects",
+        render: () => <h1>/docs/endpoints/:endpoint/objects</h1>,
+      }
+    ];
   }
   
   componentWillMount() {
@@ -34,13 +62,16 @@ export default class App extends Component {
           <span className="visually-hidden">Spotify for Developers</span>
         </header>
         <div className="secondaryNav secondaryNav-webApi">
-          <h1>Web API Reference <span className="version">BETA.0.0.1</span></h1>
+          <h1>Web API Reference <span className="version">{this.releaseVersion}</span></h1>
         </div>
       
         <main>
           {status === 'loading' && <h3>Loading ...</h3>}
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
-          {status === 'loaded' && <h3>Loaded. {JSON.stringify(documentation)}</h3>}
+          {status === 'loaded' && <Switch>
+            {this.sidebarItems.map(sidebarItem => (<Route exact {...sidebarItem} />))}
+            <Redirect from="/" to="/docs" />
+          </Switch>}
         </main>
 
         <footer className="App-footer">
