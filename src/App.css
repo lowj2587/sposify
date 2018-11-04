@@ -43,13 +43,26 @@
 
 .App .sidebarNav {
   word-wrap: break-word;
+  font-family: "Source Code Pro", Circular, Helvetica, Arial, sans-serif;;
 }
 
 .App .sidebarNav > ul {
   margin: 0;
-  padding: 2px;
+  padding: 10px 0;
 }
 
 .App .sidebarNav > ul > li {
-  list-style: none;
+  list-style: decimal inside;
+}
+
+.App .sidebarNav > ul > li > a {
+  font-size: 17px;
+}
+
+.App .sidebarNav > ul > li a {
+  color: #191919;
+}
+
+.App .sidebarNav > ul > li a:hover {
+  text-decoration: underline;
 }
