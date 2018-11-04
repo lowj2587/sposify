@@ -4,7 +4,7 @@ const getDocumentationFromApi = () => new Promise((resolve, reject) => {
   
   const localStorageEntry = localStorage.getItem(localStorageKey);
   if (localStorageEntry) {
-    // return resolve(JSON.parse(localStorageEntry));
+    return resolve(JSON.parse(localStorageEntry));
   }
   
   fetch(docsUrl).then(res => res.json()).then(res => res.reference).then(reference => {

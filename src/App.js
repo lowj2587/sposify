@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import logo from './logo.svg';
 
-import { getDocumentationFromApi } from './services/DocumentationAPI.js';
+import { getDocumentationFromApi } from './services/getDocumentationFromApi.js';
 
 export default class App extends Component {
   constructor(props) {
