@@ -51,7 +51,24 @@ export default class App extends Component {
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
           {status === 'loaded' && <div className="container-fluid">
             <div className="row">
-              <div className="col-sm-2 sidebarNav" style={{ backgroundColor: "blue" }}>
+              <div className="col-sm-2 sidebarNav">
+                <ul>
+                  <li>
+                    <a href="#">Introduction</a>
+                    <ul>
+                      <li></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Docs</a>
+                    <ul>
+                      <li></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="https://github.com/spotify/web-api/issues" target="_blank" rel="nofollow" alt="Developer Support on GitHub">Support</a>
+                  </li>
+                </ul>
                 {JSON.stringify(documentationCategories)}
               </div>
               <div className="col-sm-10" style={{ backgroundColor: "transparent" }}>

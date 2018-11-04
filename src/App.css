@@ -44,3 +44,12 @@
 .App .sidebarNav {
   word-wrap: break-word;
 }
+
+.App .sidebarNav > ul {
+  margin: 0;
+  padding: 2px;
+}
+
+.App .sidebarNav > ul > li {
+  list-style: none;
+}
