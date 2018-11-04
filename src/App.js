@@ -34,7 +34,7 @@ export default class App extends Component {
   }
   
   render() {
-    const { status, documentation } = this.state;
+    const { status, documentation, documentationCategories } = this.state;
     
     return (
       <div className="App">
@@ -50,10 +50,10 @@ export default class App extends Component {
           {status === 'loading' && <h3>Loading ...</h3>}
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
           {status === 'loaded' && <div className="container-fluid">
-            <div class="col-sm-3">
-              {documentationCategories}
+            <div className="col-sm-3">
+              {JSON.stringify(documentationCategories)}
             </div>
-            <div class="col-sm-9">
+            <div className="col-sm-9">
               <h3>Hello world</h3>
             </div>
           </div>}

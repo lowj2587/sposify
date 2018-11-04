@@ -1,7 +1,11 @@
+const extractSidebarCategoriesFromDocumentation = documentation => {
+  return documentation.endpoints.map(({ category }) => category).filter((category, pos, arr) => {
+    return arr.indexOf(category) == pos;
+  }).sort();
+};
+
 const extractSidebarFromDocumentation = documentation => {
-  return documentation.endpoints.map(endpoint => endpoint.category).filter((elem, pos, arr) => {
-    return arr.indexOf(elem) == pos;
-  });
+  return extractSidebarCategoriesFromDocumentation(documentation);
 };
 
 export {
