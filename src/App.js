@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 // React Router
 import {
-  BrowserRouter as Router,
   Route,
   Link,
   Switch,
@@ -68,11 +67,14 @@ export default class App extends Component {
         <main>
           {status === 'loading' && <h3>Loading ...</h3>}
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
-          {status === 'loaded' && <div className="container">
-            <Switch>
-              {this.sidebarItems.map(sidebarItem => (<Route exact {...sidebarItem} />))}
-              <Redirect from="/" to="/docs" />
-            </Switch>
+          {status === 'loaded' && <div className="container-fluid" style={{ backgroundColor: "blue" }}>
+            <div class="col-sm-3">Hello world</div>
+            <div class="col-sm-9">
+              <Switch>
+                {this.sidebarItems.map(sidebarItem => (<Route exact {...sidebarItem} />))}
+                <Redirect from="/" to="/docs" />
+              </Switch>
+            </div>
           </div>}
         </main>
 

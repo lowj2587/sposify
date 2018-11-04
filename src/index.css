@@ -4,10 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-header, main, footer {
-  padding: 0 20px;
-}
-
 footer {
   padding: 20px 20px 0;
 }
