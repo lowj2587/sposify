@@ -68,10 +68,12 @@ export default class App extends Component {
         <main>
           {status === 'loading' && <h3>Loading ...</h3>}
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
-          {status === 'loaded' && <Switch>
-            {this.sidebarItems.map(sidebarItem => (<Route exact {...sidebarItem} />))}
-            <Redirect from="/" to="/docs" />
-          </Switch>}
+          {status === 'loaded' && <div className="container">
+            <Switch>
+              {this.sidebarItems.map(sidebarItem => (<Route exact {...sidebarItem} />))}
+              <Redirect from="/" to="/docs" />
+            </Switch>
+          </div>}
         </main>
 
         <footer className="App-footer">
