@@ -7,7 +7,7 @@ import logo from './logo.svg';
 
 // Documentation API
 import { getDocumentationFromApi } from './services/getDocumentationFromApi.js';
-import { extractSidebarFromDocumentation } from './services/extractSidebarFromDocumentation.js';
+import { sidebarFromDocumentation } from './services/extractSidebarFromDocumentation.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class App extends Component {
   
   componentWillMount() {
     getDocumentationFromApi().then(documentation => {
-      const documentationCategories = extractSidebarFromDocumentation(documentation);
+      const documentationCategories = sidebarFromDocumentation(documentation);
       
       this.setState({ status: 'loaded', documentation, documentationCategories });      
     }).catch(err => {
@@ -50,11 +50,13 @@ export default class App extends Component {
           {status === 'loading' && <h3>Loading ...</h3>}
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
           {status === 'loaded' && <div className="container-fluid">
-            <div className="col-sm-3">
-              {JSON.stringify(documentationCategories)}
-            </div>
-            <div className="col-sm-9">
-              <h3>Hello world</h3>
+            <div className="row">
+              <div className="col-sm-2 sidebarNav" style={{ backgroundColor: "blue" }}>
+                {JSON.stringify(documentationCategories)}
+              </div>
+              <div className="col-sm-10" style={{ backgroundColor: "transparent" }}>
+                <h3>Hello world</h3>
+              </div>
             </div>
           </div>}
         </main>
