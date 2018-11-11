@@ -1,6 +1,6 @@
 import { slugify } from "../helpers";
 
-const documentationByCategories = ({ endpoints }) => {
+const documentationCategoriesWithEndpoints = ({ endpoints }) => {  
   const categories = {};
   
   endpoints.forEach(endpoint => {
@@ -17,5 +17,5 @@ const documentationByCategories = ({ endpoints }) => {
 };
 
 export {
-  documentationByCategories
+  documentationCategoriesWithEndpoints
 };

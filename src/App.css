@@ -4,9 +4,12 @@
 }
 
 .App-header {
-  background-color: #fff;
   padding: 20px;
   color: white;
+}
+
+.App-footer {
+  background-color: #000;
 }
 
 .App-logo {
@@ -43,20 +46,32 @@
 
 .App .sidebarNav {
   word-wrap: break-word;
-  font-family: "Source Code Pro", Circular, Helvetica, Arial, sans-serif;;
 }
 
 .App .sidebarNav > ul {
   margin: 0;
   padding: 10px 0;
+  line-height: 1.75;
 }
 
-.App .sidebarNav > ul > li {
-  list-style: decimal inside;
+.App .sidebarNav > ul > li > ul {
+  margin: 0;
+  padding: 0 20px;
+  line-height: 1.5;
+}
+
+.App .sidebarNav > ul > li,
+.App .sidebarNav > ul > li > ul > li {
+  list-style: circle inside;
 }
 
 .App .sidebarNav > ul > li > a {
-  font-size: 17px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.App .sidebarNav > ul > li > ul > li > a {
+  font-size: 19px;
 }
 
 .App .sidebarNav > ul > li a {
