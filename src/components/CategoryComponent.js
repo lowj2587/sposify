@@ -1,7 +1,7 @@
 // React
 import React, { Component } from 'react';
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 export default class CategoryComponent extends Component {
   render() {
@@ -16,8 +16,6 @@ export default class CategoryComponent extends Component {
         {categoryEndpoints.map(endpoint => (
           <div className="apiCategoryEndpoint">
             <h2>{endpoint.name}</h2>
-            
-            <SyntaxHighlighter language='javascript'>{codeString}</SyntaxHighlighter>
 
             <p>{JSON.stringify(endpoint)}</p>
           </div>
