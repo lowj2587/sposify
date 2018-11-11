@@ -74,27 +74,35 @@ export default class App extends Component {
                 </ul>
               </div>
               <div className="col-sm-11 docsContent">
-                <h1 className="display-1"><a href="#">Introduction</a></h1>
-                
-                <p>Hello world.</p>
-                
-                <h1 className="display-1"><a href="#">Docs</a></h1>
+                <div className="docsContentSection">
+                  <h1 className="display-1"><a href="#">Introduction</a></h1>
 
-                {Object.keys(categoriesWithEndpoints).map(endpointCategory => (
-                  <div className="endpointCategory">
-                    <h1><a href="#">{endpointCategory} API</a></h1>
-                  </div>
-                ))}
+                  <p>Hello world.</p>
+                </div>
                 
-                <h1 className="display-1"><a href="#">Support</a></h1>
+                <div className="docsContentSection">
+                  <h1 className="display-1"><a href="#">Docs</a></h1>
+
+                  {Object.keys(categoriesWithEndpoints).map(endpointCategory => (
+                    <div className="endpointCategory">
+                      <h1><a href="#">{endpointCategory} API</a></h1>
+                    </div>
+                  ))}
+                </div>
                 
-                <p>Hello world.</p>
+                <div className="docsContentSection">
+                  <h1 className="display-1"><a href="#">Support</a></h1>
+
+                  <p>Hello world.</p>
+                </div>
+                
+                <div className="docsContentCodeMenu" />
               </div>
             </div>
           </div>}
         </main>
         
-        <footer className="footer footer-default footer-simple" role="contentinfo">
+        <footer className="footer footer-default" role="contentinfo">
           <div className="container">
             <nav class="row">
               <div class="col-xs-12 col-md-3">

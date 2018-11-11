@@ -46,7 +46,7 @@
 }
 
 .App .sidebarNav {
-  padding-top: 5
+  padding-top: 50px;
   word-wrap: break-word;
   color: white;
 }
@@ -55,6 +55,7 @@
   margin: 0;
   padding: 10px 0;
   line-height: 1.75;
+  position: fixed;
 }
 
 .App .sidebarNav > ul > li > ul {
@@ -87,28 +88,45 @@
 }
 
 .App .docsContent {
+  position: relative;
   color: white;
 }
 
-.App .docsContent > h1 > a {
+.App .docsContent .docsContentCodeMenu {
+  position: fixed;
+  width: 40%;
+  top: 197px;
+  right: 0;
+  background: pink;
+  height: 100%;
+  z-index: 10;
+}
+
+.App .docsContent .docsContentSection {
+  position: relative;
+  width: 60%;
+  left: 0;
+}
+
+.App .docsContent > .docsContentSection > > h1 > a {
   color: white;
 }
 
-.App .docsContent .endpointCategory {
+.App .docsContent > .docsContentSection > .endpointCategory {
   color: white;
 }
 
-.App .docsContent .endpointCategory > h1 {
+.App .docsContent > .docsContentSection > .endpointCategory > h1 {
   color: rgba(255, 255, 255, 0.5);  
   font-weight: 200;
   letter-spacing: -0.1rem;
 }
 
-.App .docsContent .endpointCategory > h1 > a {
+.App .docsContent > .docsContentSection > .endpointCategory > h1 > a {
   color: white;
   list-style: circle inside;
 }
 
-.App .docsContent .endpointCategory > h1 > a:hover {
+.App .docsContent > .docsContentSection > .endpointCategory > h1 > a:hover {
   text-decoration: underline;
 }
