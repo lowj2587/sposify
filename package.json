@@ -18,6 +18,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+<<<<<<< HEAD
   "license": "MIT",
   "browserslist": [
     ">0.2%",
@@ -25,4 +26,7 @@
     "not ie <= 11",
     "not op_mini all"
   ]
+=======
+  "license": "MIT"
+>>>>>>> 2d910cb40194466b24a0f6043339d2e6b7213d28
 }
