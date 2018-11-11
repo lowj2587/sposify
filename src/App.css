@@ -1,11 +1,18 @@
 .App {
   font-family: Circular, Helvetica, Arial, sans-serif;
   text-align: left;
+  position: relative;
 }
 
 .App-header {
   padding: 20px;
   color: white;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 117px;
+  background: #222326;
 }
 
 .App-footer {
@@ -19,6 +26,12 @@
 
 .App .secondaryNav {
   padding: 30px;
+
+  position: fixed;
+  top: 117px;
+  width: 100%;
+  height: 117px;
+  background: #222326;
 }
 
 .App .secondaryNav.secondaryNav-webApi {
@@ -95,11 +108,10 @@
 .App .docsContent .docsContentCodeMenu {
   position: fixed;
   width: 40%;
-  top: 197px;
+  top: 0;
   right: 0;
-  background: pink;
+  background: #000;
   height: 100%;
-  z-index: 10;
 }
 
 .App .docsContent .docsContentSection {
@@ -108,7 +120,7 @@
   left: 0;
 }
 
-.App .docsContent > .docsContentSection > > h1 > a {
+.App .docsContent > .docsContentSection > h1 > a {
   color: white;
 }
 
