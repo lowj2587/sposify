@@ -24,9 +24,7 @@ export default class App extends Component {
   
   componentWillMount() {
     getDocumentationFromApi().then(documentation => {
-      const {
-        categories: documentationCategories
-      } = sidebarFromDocumentation(documentation);
+      const documentationCategories = sidebarFromDocumentation(documentation).categories;
       
       this.setState({ status: 'loaded', documentation, documentationCategories });      
     }).catch(err => {
@@ -61,21 +59,24 @@ export default class App extends Component {
                   <li>
                     <a href="#">Docs</a>
                     <ul>
-                      {documentationCategories.map(documentationCategory => (
-                        <li>
-                          <a href={documentationCategory.categoryUrl}>{documentationCategory.categoryName}</a>
-                        </li>
-                      ))}
+                    {documentationCategories.map(documentationCategory => (
+                      <li>
+                        <a href={documentationCategory.categoryUrl}>{documentationCategory.categoryName}</a>
+                      </li>
+                    ))}
                     </ul>
                   </li>
                   <li>
                     <a href="https://github.com/spotify/web-api/issues" target="_blank" rel="nofollow" alt="Developer Support on GitHub">Support</a>
                   </li>
                 </ul>
-                {JSON.stringify(documentationCategories)}
               </div>
-              <div className="col-sm-10" style={{ backgroundColor: "transparent" }}>
-                <h3>Hello world</h3>
+              <div className="col-sm-10">
+                
+              {documentation.endpoints.map(endpoint => (
+                <p>{JSON.stringify(endpoint)}</p>
+              ))}
+                
               </div>
             </div>
           </div>}
