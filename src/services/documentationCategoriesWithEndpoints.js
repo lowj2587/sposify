@@ -4,7 +4,7 @@ const documentationCategoriesWithEndpoints = ({ endpoints }) => {
   const categories = {};
   
   endpoints.forEach(endpoint => {
-    const { category } = endpoint;
+    const category = slugify(`${endpoint.category} API`);
     
     if(!categories[category]) {
       categories[category] = [endpoint];

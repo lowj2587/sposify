@@ -83,17 +83,19 @@ export default class App extends Component {
                 <div className="docsContentSection">
                   <h1 className="display-1"><a href="#">Docs</a></h1>
 
-                  {Object.keys(categoriesWithEndpoints).map(endpointCategory => (
-                    <div className="endpointCategory">
-                      <h1><a href="#">{endpointCategory} API</a></h1>
-                    </div>
-                  ))}
+                  {Object.keys(categoriesWithEndpoints).map(endpointCategorySlug => {
+                    return (
+                      <div className="endpointCategory">
+                        <h1 id={endpointCategorySlug}><a href={"#" + endpointCategorySlug}>{categoriesWithEndpoints[endpointCategorySlug][0].category} API</a></h1>
+                      </div>
+                    )
+                  })}
                 </div>
                 
                 <div className="docsContentSection">
                   <h1 className="display-1"><a href="#">Support</a></h1>
 
-                  <p>Hello world.</p>
+                  <p>Visit our <a href="https://github.com/spotify/web-api/issues">GitHub issue tracker</a> to get developer support on Web API.</p>
                 </div>
                 
                 <div className="docsContentCodeMenu" />

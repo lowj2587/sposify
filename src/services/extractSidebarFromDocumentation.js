@@ -9,7 +9,7 @@ const extractCategoryNamesFromDocumentation = documentation => {
 const sidebarFromDocumentation = documentation => {
   const categories = extractCategoryNamesFromDocumentation(documentation).map(categoryName => ({
     categoryName,
-    categoryUrl: `/${slugify(categoryName)}`
+    categoryUrl: `#${slugify(categoryName)}`
   }));
   
   return {
