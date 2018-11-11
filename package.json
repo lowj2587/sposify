@@ -5,7 +5,8 @@
   "dependencies": {
     "create-react-app": "^2.1.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-syntax-highlighter": "^10.0.1"
   },
   "proxy": "https://spotify-web-api.glitch.me",
   "devDependencies": {
