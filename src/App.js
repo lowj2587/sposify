@@ -9,6 +9,7 @@ import logo from './logo.svg';
 import { getDocumentationFromApi } from './services/getDocumentationFromApi.js';
 import { sidebarFromDocumentation } from './services/extractSidebarFromDocumentation.js';
 import { documentationCategoriesWithEndpoints } from './services/documentationCategoriesWithEndpoints.js';
+import { generateAccountsAuthUrl, isAccessToken, getAccessToken } from './services/useSpotifyAccountsApi';
 
 // Components
 import CategoryComponent from './components/CategoryComponent.js';
@@ -56,7 +57,7 @@ export default class App extends Component {
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
           {status === 'loaded' && <div className="container-fluid">
             <div className="row">
-              <div className="col-sm-1 sidebarNav">
+              <div className="col-sm-2 sidebarNav">
                 <ul>
                   <li>
                     <a href="#introduction">Introduction</a>
@@ -76,15 +77,25 @@ export default class App extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="col-sm-11 docsContent">
+              <div className="col-sm-10 docsContent">
                 <div className="docsContentSection">
-                  <h1 className="display-1"><a href="#introduction">Introduction</a></h1>
+                  <h1 id="introduction" className="display-1"><a href="#introduction">Introduction</a></h1>
 
                   <p>Hello world.</p>
+
+                  {!isAccessToken() && <div className="moveToRightColumn">
+                    <small>Sign in to use the console, pre-fill code samples, and more.</small>
+                    <a href={generateAccountsAuthUrl()} style={{ marginLeft: 15 }} className="btn btn-sm btn-primary">Sign in with Spotify</a>
+                  </div>}
+
+                  {isAccessToken() && <div className="moveToRightColumn">
+                    <small>Welcome. You've signed in with your Spotify account!</small>
+                    <a href="/" style={{ marginLeft: 15 }} className="btn btn-sm btn-secondary">Sign out</a>
+                  </div>}
                 </div>
                 
                 <div className="docsContentSection">
-                  <h1 className="display-1"><a href="#docs">Docs</a></h1>
+                  <h1 id="docs" className="display-1"><a href="#docs">Docs</a></h1>
 
                   {Object.keys(categoriesWithEndpoints).map(endpointCategorySlug => {
                     const endpoints = categoriesWithEndpoints[endpointCategorySlug];
@@ -95,7 +106,7 @@ export default class App extends Component {
                 </div>
                 
                 <div className="docsContentSection">
-                  <h1 className="display-1"><a href="#support">Support</a></h1>
+                  <h1 id="support" className="display-1"><a href="#support">Support</a></h1>
 
                   <p>Visit our <a href="https://github.com/spotify/web-api/issues">GitHub issue tracker</a> to get developer support on Web API.</p>
                 </div>

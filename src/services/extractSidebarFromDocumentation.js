@@ -2,7 +2,7 @@ import { slugify } from "../helpers"
 
 const extractCategoryNamesFromDocumentation = documentation => {
   return documentation.endpoints.map(({ category }) => category).filter((category, pos, arr) => {
-    return arr.indexOf(category) == pos;
+    return arr.indexOf(category) === pos;
   }).sort().map(categoryName => `${categoryName} API`);
 };
 

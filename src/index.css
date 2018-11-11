@@ -1,10 +1,11 @@
 html, body {
-  background: #222326;
+  background: #000;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background: #222326;
   font-family: sans-serif;
 }
 
@@ -19,6 +20,10 @@ h1 {
 
 h2, h3, h4 {
   letter-spacing: -0.15rem;
+}
+
+pre {
+  border: 0 !important;
 }
 
 .spotify-green {
