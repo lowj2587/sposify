@@ -53,7 +53,7 @@ export default class App extends Component {
           {status === 'error' && <h3>An unexpected error occurred. Refresh!</h3>}
           {status === 'loaded' && <div className="container-fluid">
             <div className="row">
-              <div className="col-sm-2 sidebarNav">
+              <div className="col-sm-1 sidebarNav">
                 <ul>
                   <li>
                     <a href="#">Introduction</a>
@@ -73,14 +73,22 @@ export default class App extends Component {
                   </li>
                 </ul>
               </div>
-              <div className="col-sm-10">
+              <div className="col-sm-11 docsContent">
+                <h1 className="display-1"><a href="#">Introduction</a></h1>
+                
+                <p>Hello world.</p>
+                
+                <h1 className="display-1"><a href="#">Docs</a></h1>
 
-              {Object.keys(categoriesWithEndpoints).map(endpointCategory => (
-                <div className="endpointCategory">
-                  <h1><a href="#">{endpointCategory} API</a></h1>
-                </div>
-              ))}
-
+                {Object.keys(categoriesWithEndpoints).map(endpointCategory => (
+                  <div className="endpointCategory">
+                    <h1><a href="#">{endpointCategory} API</a></h1>
+                  </div>
+                ))}
+                
+                <h1 className="display-1"><a href="#">Support</a></h1>
+                
+                <p>Hello world.</p>
               </div>
             </div>
           </div>}

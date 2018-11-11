@@ -46,7 +46,9 @@
 }
 
 .App .sidebarNav {
+  padding-top: 5
   word-wrap: break-word;
+  color: white;
 }
 
 .App .sidebarNav > ul {
@@ -73,12 +75,40 @@
 
 .App .sidebarNav > ul > li > ul > li > a {
   font-size: 19px;
+  color: rgba(255, 255, 255, 0.5)
 }
 
 .App .sidebarNav > ul > li a {
-  color: #191919;
+  color: white;
 }
 
 .App .sidebarNav > ul > li a:hover {
+  text-decoration: underline;
+}
+
+.App .docsContent {
+  color: white;
+}
+
+.App .docsContent > h1 > a {
+  color: white;
+}
+
+.App .docsContent .endpointCategory {
+  color: white;
+}
+
+.App .docsContent .endpointCategory > h1 {
+  color: rgba(255, 255, 255, 0.5);  
+  font-weight: 200;
+  letter-spacing: -0.1rem;
+}
+
+.App .docsContent .endpointCategory > h1 > a {
+  color: white;
+  list-style: circle inside;
+}
+
+.App .docsContent .endpointCategory > h1 > a:hover {
   text-decoration: underline;
 }
