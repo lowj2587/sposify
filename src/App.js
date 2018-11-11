@@ -56,10 +56,10 @@ export default class App extends Component {
               <div className="col-sm-1 sidebarNav">
                 <ul>
                   <li>
-                    <a href="#">Introduction</a>
+                    <a href="#introduction">Introduction</a>
                   </li>
                   <li>
-                    <a href="#">Docs</a>
+                    <a href="#docs">Docs</a>
                     <ul>
                     {documentationCategories.map(documentationCategory => (
                       <li>
@@ -69,31 +69,43 @@ export default class App extends Component {
                     </ul>
                   </li>
                   <li>
-                    <a href="https://github.com/spotify/web-api/issues" target="_blank" rel="nofollow" alt="Developer Support on GitHub">Support</a>
+                    <a href="#support">Support</a>
                   </li>
                 </ul>
               </div>
               <div className="col-sm-11 docsContent">
                 <div className="docsContentSection">
-                  <h1 className="display-1"><a href="#">Introduction</a></h1>
+                  <h1 className="display-1"><a href="#introduction">Introduction</a></h1>
 
                   <p>Hello world.</p>
                 </div>
                 
                 <div className="docsContentSection">
-                  <h1 className="display-1"><a href="#">Docs</a></h1>
+                  <h1 className="display-1"><a href="#docs">Docs</a></h1>
 
                   {Object.keys(categoriesWithEndpoints).map(endpointCategorySlug => {
+                    const endpoints = categoriesWithEndpoints[endpointCategorySlug];
+                    const [{ category }] = endpoints;
+                    
                     return (
-                      <div className="endpointCategory">
-                        <h1 id={endpointCategorySlug}><a href={"#" + endpointCategorySlug}>{categoriesWithEndpoints[endpointCategorySlug][0].category} API</a></h1>
+                      <div className="apiCategory">
+                        <h1 id={endpointCategorySlug}><a href={"#" + endpointCategorySlug}>{category} API</a></h1>
+                        
+                        {endpoints.map(endpoint => (
+                          <div className="apiCategoryEndpoint">
+                            <h2>{endpoint.name}</h2>
+                            
+                            
+                            <p>{JSON.stringify(endpoint)}</p>
+                          </div>
+                        ))}
                       </div>
                     )
                   })}
                 </div>
                 
                 <div className="docsContentSection">
-                  <h1 className="display-1"><a href="#">Support</a></h1>
+                  <h1 className="display-1"><a href="#support">Support</a></h1>
 
                   <p>Visit our <a href="https://github.com/spotify/web-api/issues">GitHub issue tracker</a> to get developer support on Web API.</p>
                 </div>

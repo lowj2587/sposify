@@ -126,7 +126,7 @@
 
 .App .docsContent .docsContentSection {
   position: relative;
-  width: 60%;
+  width: 55%;
   left: 0;
 }
 
@@ -134,21 +134,25 @@
   color: white;
 }
 
-.App .docsContent > .docsContentSection > .endpointCategory {
+.App .docsContent > .docsContentSection > .apiCategory {
   color: white;
 }
 
-.App .docsContent > .docsContentSection > .endpointCategory > h1 {
+.App .docsContent > .docsContentSection > .apiCategory > h1 {
   color: rgba(255, 255, 255, 0.5);  
   font-weight: 200;
   letter-spacing: -0.1rem;
 }
 
-.App .docsContent > .docsContentSection > .endpointCategory > h1 > a {
+.App .docsContent > .docsContentSection > .apiCategory > h1 > a {
   color: white;
   list-style: circle inside;
 }
 
-.App .docsContent > .docsContentSection > .endpointCategory > h1 > a:hover {
+.App .docsContent > .docsContentSection > .apiCategory > h1 > a:hover {
   text-decoration: underline;
+}
+
+.App .docsContent > .docsContentSection > .apiCategory > .apiCategoryEndpoint {
+  color: white;
 }
