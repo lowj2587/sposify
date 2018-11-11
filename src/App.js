@@ -8,6 +8,7 @@ import logo from './logo.svg';
 // Documentation API
 import { getDocumentationFromApi } from './services/getDocumentationFromApi.js';
 import { sidebarFromDocumentation } from './services/extractSidebarFromDocumentation.js';
+import { documentationByCategories } from './services/documentationByCategories.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ export default class App extends Component {
   
   render() {
     const { status, documentation, documentationCategories } = this.state;
+    const CA = endpointsByCategories(documentation);
     
     return (
       <div className="App">
@@ -72,11 +74,11 @@ export default class App extends Component {
                 </ul>
               </div>
               <div className="col-sm-10">
-                
-              {documentation.endpoints.map(endpoint => (
+
+              {documentationByCategories(documentation).map(endpoint => (
                 <p>{JSON.stringify(endpoint)}</p>
               ))}
-                
+
               </div>
             </div>
           </div>}
